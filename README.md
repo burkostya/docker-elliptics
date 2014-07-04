@@ -31,7 +31,7 @@ Alternately you can build the image yourself.
 ```bash
 git clone https://github.com/burkostya/docker-elliptics.git
 cd docker-elliptics
-docker build -t '<user>/elliptics'
+docker build -t '<user>/elliptics' .
 ```
 
 # Quick Start
