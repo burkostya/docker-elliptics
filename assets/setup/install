@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+ELLIPTICS_VERSION=2.25.4.20
+
+IP=$(cat /etc/hosts | grep "${HOSTNAME}" | awk '{ print $1 }')
+
+cat > /etc/apt/sources.list.d/reverbrain.list <<EOF
+deb http://repo.reverbrain.com/trusty/ current/amd64/
+deb http://repo.reverbrain.com/trusty/ current/all/
+EOF
+
+curl http://repo.reverbrain.com/REVERBRAIN.GPG | apt-key add -
+
+apt-get -y update
+apt-get install -y elliptics="${ELLIPTICS_VERSION}"

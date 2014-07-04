@@ -1,0 +1,44 @@
+#!/bin/bash
+set -e
+
+appStart () {
+
+  #some directories
+  mkdir /tmp/history/
+  mkdir /tmp/root
+  mkdir -p /opt/elliptics/eblob.1
+  mkdir /opt/elliptics/history.1
+
+  dnet_ioserv -c /app/setup/ioserv.json
+}
+
+appHelp () {
+  echo "Available options:"
+  echo "  app:start          - Starts the elliptics (default)"
+  echo "  app:help           - Displays the help"
+  echo "  [command]          - Execute the specified linux command eg. bash"
+}
+
+case "$1" in
+  app:start)
+    appStart
+    ;;
+  app:help)
+    appHelp
+    ;;
+  *)
+    if [ -x $1 ]; then
+      $1
+    else
+      prog=$(which $1)
+      if [ -n "${prog}" ] ; then
+        shift 1
+        $prog $@
+      else
+        appHelp
+      fi
+    fi
+    ;;
+esac
+
+exit 0
