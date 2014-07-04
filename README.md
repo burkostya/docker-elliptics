@@ -5,14 +5,15 @@
 - [Quick Start](#quick-start)
 - [Configuration](#configuration)
     - [Data Store](#data-store)
-- [Upgrading](#upgrading)
 - [Thanks](#thanks)
 
 # Introduction
-Dockerfile to build image with npm registry proxied with kappa.
+Dockerfile to build image with elliptics.
+
+For now this image is just a part of basic cocaine cloud installation.
 
 ## Version
-Current Version: 2.4.2
+Current Version: 2.25.4.20
 
 # Installation
 
@@ -22,53 +23,24 @@ in the future.
 These builds are performed by the **Docker Trusted Build** service.
 
 ```bash
-docker pull burkostya/npm-registry:2.4.2
+docker pull burkostya/elliptics:2.25.4.20
 ```
 
 Alternately you can build the image yourself.
 
 ```bash
-git clone https://github.com/burkostya/npm-registry.git
-cd npm-registry
-docker build -t '<user>/npm-registry' .
+git clone https://github.com/burkostya/docker-elliptics.git
+cd docker-elliptics
+docker build -t '<user>/elliptics'
 ```
 
 # Quick Start
 Run container
 
 ```bash
-docker run --name='npm-registry' -i -t --rm \
-  -p 5984:5984 -p 80:80 \
-  burkostya/npm-registry:2.4.2
-```
-
-Couchdb with installed couchapp now available on http://localhost:5984.
-
-Credentials:
-
-* username: admin
-* password: password
-
-You can set your login and password for couchdb admin:
-
-```bash
-docker run --name='npm-registry' -i -t --rm \
-  -e 'COUCHDB_ADMIN_LOGIN=<login>' \
-  -e 'COUCHDB_ADMIN_PASSWORD=<password>' \
-  -p 5984:5984 -p 80:80 \
-  burkostya/npm-registry:2.4.2
-```
-
-Kappa is exposed on port 80. You can use it by setting option in .npmrc:
-
-```bash
-npm config set registry http://localhost
-```
-
-or adding option to every command:
-
-```
-npm --registry http://localhost
+docker run --name=elliptics -i -t --rm \
+  -p 1025:1025 \
+  burkostya/elliptics:2.25.4.20
 ```
 
 # Configuration
@@ -76,53 +48,28 @@ npm --registry http://localhost
 ## Data Store
 For data persistency you should mount a volume
 
-```bash
-/var/lib/couchdb
+```
+/opt/elliptics
 ```
 
 Volumes can be mounted in docker by specifying the **'-v'**
 option in the docker run command.
 
 ```bash
-mkdir /opt/data/npm-registry
-docker run --name='npm-registry' -d \
-  -p 5984:5984 -p 80:80 \
-  -v /opt/data/npm-registry:/var/lib/couchdb \
-  burkostya/npm-registry:2.4.2
-
-```
-
-# Upgrading
-
-To upgrade to newer couchapp, follow this steps:
-
-- Update the docker image.
-
-```bash
-docker pull burkostya/npm-registry:2.4.2
-```
-
-- Stop the currently running image
-
-```bash
-docker stop npm-registry
-```
-
-- Backup the application data just by coping content of mounted volume
-
-```bash
-cp -r /opt/data/npm-registry /some/npm/backup/dir/
+mkdir /opt/data/elliptics
+docker run --name=elliptics -d \
+  -p 1025 \
+  -v /opt/data/elliptics:/opt/elliptics \
+  burkostya/elliptics:2.25.4.20
 ```
 
 - Start the image
 
 ```bash
-docker run --name='npm-registry' -d \
-  -e 'COUCHDB_ADMIN_LOGIN=<login>' \
-  -e 'COUCHDB_ADMIN_PASSWORD=<password>' \
-  -p 5984:5984 -p 80:80 \
-  -v /opt/data/npm-registry:/var/lib/couchdb \
-  burkostya/npm-registry:2.4.2
+docker run --name=elliptics -d \
+  -p 1025:1025 \
+  -v /opt/data/elliptics:/opt/elliptics \
+  burkostya/elliptics:2.25.4.20
 ```
 
 # Thanks
