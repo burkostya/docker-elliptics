@@ -1,15 +1,22 @@
 #!/bin/bash
 set -e
 
+IP=$(cat /etc/hosts | grep "${HOSTNAME}" | awk '{ print $1 }')
+
+#some directories
+echo $IP
+mkdir /tmp/history/
+mkdir /tmp/root
+mkdir -p /opt/elliptics/eblob.2
+# touch /opt/elliptics/eblob.2/data
+mkdir /opt/elliptics/history.2
+
+sed -i "s,{{IP}},""${IP}"",g" -i /app/setup/ioserv.json
+
 appStart () {
 
-  #some directories
-  mkdir /tmp/history/
-  mkdir /tmp/root
-  mkdir -p /opt/elliptics/eblob.1
-  mkdir /opt/elliptics/history.1
-
   dnet_ioserv -c /app/setup/ioserv.json
+
 }
 
 appHelp () {

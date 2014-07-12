@@ -20,10 +20,10 @@
     "join": true,
     "flags": 20,
     "remote": [
-      "autodiscovery:224.0.0.5:1025:2"
+      "autodiscovery:224.124.1.8:1025:2"
     ],
     "address": [
-      "localhost:1025:2-0"
+      "{{IP}}:1025:2-2"
     ],
     "wait_timeout": 60,
     "check_timeout": 60,
@@ -39,15 +39,15 @@
     "cache": {
       "size": 68719476736
     },
-    "indexes_shard_count": 2,
+    "indexes_shard_count": 16,
     "monitor_port": 20000
   },
   "backends": [
     {
       "type": "blob",
-      "group": 1,
-      "history": "/opt/elliptics/history.1",
-      "data": "/opt/elliptics/eblob.1/data",
+      "group": 2,
+      "history": "/opt/elliptics/history.2",
+      "data": "/opt/elliptics/eblob.2/data",
       "sync": "-1",
       "blob_flags": "158",
       "blob_size": "10G",

@@ -2,9 +2,7 @@
 
 set -e
 
-ELLIPTICS_VERSION=2.25.4.20
-
-IP=$(cat /etc/hosts | grep "${HOSTNAME}" | awk '{ print $1 }')
+ELLIPTICS_VERSION=2.25.4.21
 
 cat > /etc/apt/sources.list.d/reverbrain.list <<EOF
 deb http://repo.reverbrain.com/trusty/ current/amd64/
