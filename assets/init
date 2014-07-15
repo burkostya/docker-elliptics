@@ -4,7 +4,6 @@ set -e
 IP=$(cat /etc/hosts | grep "${HOSTNAME}" | awk '{ print $1 }')
 
 #some directories
-echo $IP
 mkdir /tmp/history/
 mkdir /tmp/root
 mkdir -p /opt/elliptics/eblob.2
