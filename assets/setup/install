@@ -12,4 +12,5 @@ EOF
 wget -qO- http://repo.reverbrain.com/REVERBRAIN.GPG | apt-key add -
 
 apt-get -y update
-apt-get install -y elliptics="${ELLIPTICS_VERSION}"
+apt-get install -y elliptics="${ELLIPTICS_VERSION}" \
+  elliptics-client="${ELLIPTICS_VERSION}"
