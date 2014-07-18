@@ -5,7 +5,6 @@
 - [Quick Start](#quick-start)
 - [Configuration](#configuration)
     - [Data Store](#data-store)
-- [Thanks](#thanks)
 
 # Introduction
 Dockerfile to build image with elliptics.
@@ -13,7 +12,7 @@ Dockerfile to build image with elliptics.
 For now this image is just a part of basic cocaine cloud installation.
 
 ## Version
-Current Version: 2.25.4.20
+Current Version: 2.25.5.1
 
 # Installation
 
@@ -23,7 +22,7 @@ in the future.
 These builds are performed by the **Docker Trusted Build** service.
 
 ```bash
-docker pull burkostya/elliptics:2.25.4.20
+docker pull burkostya/elliptics:2.25.5.1
 ```
 
 Alternately you can build the image yourself.
@@ -40,7 +39,7 @@ Run container
 ```bash
 docker run --name=elliptics -i -t --rm \
   -p 1025:1025 \
-  burkostya/elliptics:2.25.4.20
+  burkostya/elliptics:2.25.5.1
 ```
 
 # Configuration
@@ -60,7 +59,7 @@ mkdir /opt/data/elliptics
 docker run --name=elliptics -d \
   -p 1025 \
   -v /opt/data/elliptics:/opt/elliptics \
-  burkostya/elliptics:2.25.4.20
+  burkostya/elliptics:2.25.5.1
 ```
 
 - Start the image
@@ -69,9 +68,5 @@ docker run --name=elliptics -d \
 docker run --name=elliptics -d \
   -p 1025:1025 \
   -v /opt/data/elliptics:/opt/elliptics \
-  burkostya/elliptics:2.25.4.20
+  burkostya/elliptics:2.25.5.1
 ```
-
-# Thanks
-
-* @sameersbn for awesome template of container configuration
