@@ -9,7 +9,7 @@ deb http://repo.reverbrain.com/trusty/ current/amd64/
 deb http://repo.reverbrain.com/trusty/ current/all/
 EOF
 
-curl http://repo.reverbrain.com/REVERBRAIN.GPG | apt-key add -
+wget -qO- http://repo.reverbrain.com/REVERBRAIN.GPG | apt-key add -
 
 apt-get -y update
 apt-get install -y elliptics="${ELLIPTICS_VERSION}"

@@ -1,11 +1,12 @@
 # DOCKER-VERSION 1.0.1
 # DESCRIPTION    Elliptics
 
-FROM sameersbn/ubuntu:14.04.20140628
+FROM ubuntu:14.04
 
 MAINTAINER Konstantin Burykin <burkostya@gmail.com>
 
-RUN apt-get install -y curl
+RUN apt-get -y update
+RUN apt-get install -y wget
 
 ADD assets/setup /app/setup
 RUN chmod 755 /app/setup/install
