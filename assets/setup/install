@@ -2,7 +2,7 @@
 
 set -e
 
-ELLIPTICS_VERSION=2.25.5.1
+ELLIPTICS_VERSION=2.25.6.4
 
 cat > /etc/apt/sources.list.d/reverbrain.list <<EOF
 deb http://repo.reverbrain.com/trusty/ current/amd64/

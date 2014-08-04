@@ -1,4 +1,4 @@
-# DOCKER-VERSION 1.0.1
+# DOCKER-VERSION 1.1.2
 # DESCRIPTION    Elliptics
 
 FROM ubuntu:14.04
